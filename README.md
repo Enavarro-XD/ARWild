@@ -103,59 +103,13 @@ The system will use a board based on the **SOPHGO SG2002 processor**.
 
 # 🖥 System Architecture
 
-```
-Camera
-   │
-   ▼
-Image Capture
-   │
-   ▼
-Preprocessing
-   │
-   ▼
-YOLO Model (NPU)
-   │
-   ▼
-Animal Detection
-   │
-   ▼
-Augmented Reality System
-   │
-   ▼
-Display on screen / optical viewer
-```
+![System Architecture](images/1_system_architecture.png)
 
 ---
 
 # 🧭 Project Development Stages
 
-```
-Project idea
-       │
-       ▼
-Technology research
-       │
-       ▼
-Hardware selection
-       │
-       ▼
-AI model training
-       │
-       ▼
-Embedded system implementation
-       │
-       ▼
-Camera integration
-       │
-       ▼
-AR interface development
-       │
-       ▼
-Testing and optimization
-       │
-       ▼
-Final deployment
-```
+![Project Development Stages](images/2_development_stages.png)
 
 ---
 
@@ -211,21 +165,7 @@ Training data for the model will come from animal datasets such as:
 
 ## Data Flow
 
-```
-Image Capture
-     │
-     ▼
-Processing
-     │
-     ▼
-AI Inference
-     │
-     ▼
-Detection Result
-     │
-     ▼
-AR Visualization
-```
+![Data Flow](images/3_data_flow.png)
 
 ## Storage
 
