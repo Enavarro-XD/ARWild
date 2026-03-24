@@ -315,23 +315,38 @@ Optimized for:
 
 # 📦 Project Structure
 
+# 📦 Project Structure
+
     project/
     │
-    ├── dataset/
+    ├── model/
+    │   ├── yolo_model.cvimodel        # modelo optimizado (INT8 / NPU)
+    │   └── labels.txt            # clases de animales
     │
-    ├── training/
-    │   ├── train_yolo.py
+    ├── src/
+    │   ├── main.c                # punto de entrada
+    │   ├── inference.c           # ejecución del modelo
+    │   ├── inference.h
+    │   ├── camera.c              # captura de video (MIPI CSI)
+    │   ├── camera.h
+    │   ├── display.c             # salida a pantalla / overlay
+    │   └── display.h
     │
-    ├── inference/
-    │   ├── detect.py
+    ├── drivers/
+    │   ├── camera_driver/
+    │   └── display_driver/
     │
-    ├── ar_interface/
-    │   ├── display.py
+    ├── scripts/
+    │   └── convert_model.sh      # conversión/optimización del modelo
     │
-    ├── hardware/
-    │   ├── camera_driver
+    ├── config/
+    │   └── system.conf
+    │
+    ├── build/
     │
     └── README.md
+
+---
 
 ---
 
