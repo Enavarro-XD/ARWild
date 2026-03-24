@@ -115,42 +115,126 @@ The system will use a board based on the **SOPHGO SG2002 processor**.
 
 # 📋 System Requirements
 
-## Functional Requirements
+## 🔰 Minimum Viable Requirements (MVP)
 
-- Capture video from a camera
-- Run real-time object detection
-- Identify different animal species
-- Display overlay information on screen
-- Process data locally without internet dependency
+The system must satisfy the following core functionalities to be considered a valid prototype:
 
-## Non-Functional Requirements
+### Functional Requirements (Mandatory)
 
-- Low detection latency
-- Low power consumption
-- Portable system
-- Clear visual interface
+- Capture video input from a camera in real time (low resolution allowed)
+- Perform object detection using a YOLO-based model on embedded hardware
+- Detect at least a small set of animal classes (e.g., 2–5 species)
+- Display detection results on a screen (bounding boxes and/or labels)
+- Operate fully offline (no cloud dependency)
+- Execute inference locally using the embedded processor/NPU
 
 ---
 
-# ⚠️ Project Constraints
+## 🟡 Extended Functional Requirements (Optional)
 
-## Hardware Constraints
+The following features are desirable but not required for the initial prototype:
+
+- Display confidence scores for detections
+- Support a larger number of animal species
+- Provide a more advanced AR-style overlay
+- Include audio feedback or notifications
+- Improve visualization with smoother UI
+
+---
+
+## ⚙️ Non-Functional Requirements
+
+These define acceptable performance ranges rather than strict targets:
+
+- **Latency:** 200 ms – 1 second per detection (acceptable for prototype)
+- **Frame Rate (FPS):** 5–10 FPS is sufficient
+- **Accuracy:** 60–80% detection accuracy is acceptable
+- **Power Consumption:** Must run on a portable power source (e.g., power bank)
+- **Portability:** System should be reasonably compact, but not necessarily wearable in early stages
+
+---
+
+# ⚠️ System Constraints
+
+## 🔻 Hardware Constraints
 
 - Limited memory (256MB RAM)
-- Limited computing capacity
-- Low power requirements
+- Limited compute performance (1 TOPS NPU)
+- Restricted storage capacity
+- Power limitations for portable operation
 
-## Software Constraints
+Implications:
 
-- YOLO model optimization for Edge AI
-- Compatibility with RISC-V / ARM architecture
-- Embedded Linux limitations
+- Use lightweight models (e.g., YOLO Tiny / Nano)
+- Apply quantization (e.g., INT8)
+- Use reduced input resolution
 
-## Design Constraints
+---
 
-- Compact device size
-- Integration of display or optical viewer
+## 🔻 Software Constraints
 
+- Limited compatibility with RISC-V / ARM environments
+- Restricted availability of optimized AI libraries
+- Embedded Linux limitations (Buildroot / minimal Debian)
+
+---
+
+## 🔻 Design Constraints
+
+- The system is **not required to be fully integrated into smart glasses**
+- Device size and weight may exceed wearable limits in early versions
+- AR visualization may be simulated using a standard display
+
+---
+
+# 🔄 System Flexibility & Adaptability
+
+To ensure project feasibility, the system must support multiple deployment formats:
+
+### Supported Operation Modes
+
+1. **Basic Prototype Mode**
+   - Camera + embedded board + external display
+
+2. **Portable Mode**
+   - Self-contained unit with battery and screen
+
+3. **AR Mode (Experimental)**
+   - Integration with optical viewer or smart glasses (if feasible)
+
+4. **Alternative Display Mode**
+   - Output to external screens (e.g., monitor, tablet, vehicle display)
+
+---
+
+# 📉 Accepted Margin of Error
+
+Given the experimental nature of the project, the following limitations are acceptable:
+
+- Occasional misclassification of animals
+- Reduced performance in real-world environments
+- Low frame rate compared to commercial systems
+- Detection delays up to 1 second
+- Limited number of detectable species
+
+---
+
+# 🎯 Key Engineering Principle
+
+> The goal of this project is to demonstrate a functional proof of concept for real-time animal detection using embedded AI and AR visualization — not to achieve full product-level integration or performance.
+
+---
+
+# 🚧 Development Strategy Constraint
+
+The system will be developed in stages:
+
+1. Validate detection on a standard display
+2. Optimize performance on embedded hardware
+3. Integrate portability (battery-powered system)
+4. Attempt AR visualization (if feasible)
+
+AR integration is considered a **final-stage feature**, not a core requirement.
 ---
 
 # 📊 Data Handling
