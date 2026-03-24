@@ -150,6 +150,14 @@ The system is not expected to reach commercial-level performance:
 - **Power:** portable (power bank)  
 - **Portability:** compact but not necessarily wearable  
 
+### 🌡️ Environmental & Operational Requirements
+
+- Operate within **0°C to 40°C**
+- Maintain performance under variable lighting
+- Tolerate moderate humidity
+- Handle partial visibility (fog, dust, light rain)
+- Degrade gracefully under adverse conditions
+
 ---
 
 # ⚠️ System Constraints
@@ -159,6 +167,8 @@ The system is not expected to reach commercial-level performance:
 - 256MB RAM limitation  
 - 1 TOPS NPU performance limit  
 - Limited storage and power  
+- Thermal limitations due to compact design  
+- No active cooling system  
 
 This requires:
 
@@ -181,8 +191,53 @@ This requires:
 - Full smart glasses integration is **not required**  
 - Device size and weight may exceed wearable limits  
 - AR visualization can be simulated using a normal display  
+- Passive cooling only (no fan)
+- Basic environmental protection required for outdoor use  
 
 The project prioritizes **functionality over miniaturization**.
+
+---
+
+# 🌡️ Environmental Operating Conditions
+
+## Overview
+
+The system is designed for outdoor use where environmental factors directly affect performance.
+
+---
+
+## Temperature
+
+- High temperature → thermal throttling, lower FPS  
+- Mitigation: heatsink, dynamic FPS scaling  
+
+---
+
+## Lighting
+
+- Affects detection accuracy  
+- Mitigation: adaptive exposure, robust training  
+
+---
+
+## Humidity
+
+- Risk of condensation  
+- Mitigation: enclosure, lens protection  
+
+---
+
+## Weather
+
+- Rain/fog reduce visibility  
+- Mitigation: preprocessing, dataset robustness  
+
+---
+
+## Power Interaction
+
+- High load increases temperature and power usage  
+- Mitigation: dynamic resource management  
 
 ---
 
@@ -269,7 +324,12 @@ Verify detection using static images.
 Measure FPS, latency, and resource usage.
 
 ### Test 3 – Real Environment
-Test in parks, reserves, or zoos.
+Test in parks, reserves, or zoos under:
+
+- different lighting conditions  
+- temperature variation  
+- real animal movement  
+- partial occlusion  
 
 ---
 
@@ -279,6 +339,8 @@ Test in parks, reserves, or zoos.
 - Latency  
 - Energy consumption  
 - FPS  
+- Thermal behavior  
+- Performance under environmental stress  
 
 ---
 
@@ -318,43 +380,30 @@ Optimized for:
     project/
     │
     ├── model/
-    │   ├── yolo_model.cvimodel        # modelo optimizado (INT8 / NPU)
-    │   └── labels.txt            # clases de animales
+    │   ├── yolo_model.cvimodel
+    │   └── labels.txt
     │
     ├── src/
-    │   ├── main.c                # punto de entrada
-    │   ├── inference.c           # ejecución del modelo
-    │   ├── inference.h
-    │   ├── camera.c              # captura de video (MIPI CSI)
-    │   ├── camera.h
-    │   ├── display.c             # salida a pantalla / overlay
-    │   └── display.h
+    │   ├── main.c
+    │   ├── inference.c
+    │   ├── camera.c
+    │   ├── display.c
     │
     ├── drivers/
-    │   ├── camera_driver/
-    │   └── display_driver/
-    │
     ├── scripts/
-    │   └── convert_model.sh      # conversión/optimización del modelo
-    │
     ├── config/
-    │   └── system.conf
-    │
     ├── build/
-    │
     └── README.md
 
 ---
 
 # 🔮 Future Work
 
-Possible improvements for the system include:
-
 - detection of more animal species  
 - GPS integration  
 - wildlife observation logging  
-- connection with mobile applications  
-- more advanced augmented reality features  
+- mobile app integration  
+- advanced AR features  
 
 ---
 
