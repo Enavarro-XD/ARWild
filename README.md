@@ -315,8 +315,6 @@ Optimized for:
 
 # 📦 Project Structure
 
-# 📦 Project Structure
-
     project/
     │
     ├── model/
@@ -345,8 +343,6 @@ Optimized for:
     ├── build/
     │
     └── README.md
-
----
 
 ---
 
