@@ -41,7 +41,6 @@ It promotes the development of:
 - new technological applications for environmental protection  
 
 ---
-
 # 🎯 Project Objective
 
 To develop a **portable animal detection system with augmented visualization capabilities** that:
@@ -52,7 +51,6 @@ To develop a **portable animal detection system with augmented visualization cap
 - operates locally without internet dependency  
 
 ---
-
 # 💡 Motivation
 
 Observing animals in natural environments often requires experience to quickly identify species.
@@ -66,7 +64,17 @@ This project aims to:
 It also demonstrates how low-power devices can run **computer vision models locally without relying on cloud computing**.
 
 ---
+# 🔬 AI Technologies
 
+Uses **YOLO** for real-time detection.
+
+Optimized for:
+
+- low-power devices  
+- edge inference  
+- NPU execution  
+
+---
 # 🧠 Technologies Used
 
 - Computer Vision  
@@ -78,7 +86,6 @@ It also demonstrates how low-power devices can run **computer vision models loca
 - Augmented Reality  
 
 ---
-
 # 🧩 Project Hardware
 
 The system uses a board based on the **SOPHGO SG2002 processor**.
@@ -108,6 +115,36 @@ The system uses a board based on the **SOPHGO SG2002 processor**.
 ![System Architecture](images/1_system_architecture.png)
 
 ---
+# ⚖️ Analysis of Solutions and Evaluation of Alternatives
+
+For Edge AI execution, the following hardware and model options were evaluated:
+
+### Hardware Evaluation
+
+| Alternative | Advantages | Disadvantages | Decision |
+|---|---|---|---|
+| **Raspberry Pi 4** | Large community support | High power consumption and no native NPU | Discarded |
+| **ESP32-S3** | Very low cost and power consumption | Insufficient performance for real-time YOLO | Discarded |
+| **LicheeRV Nano (SG2002)** | **1 TOPS NPU, low cost, RISC-V architecture** | High technical learning curve | **Selected** |
+
+### AI Model Selection
+
+The **YOLOv8 Nano** model is selected, quantized to **INT8**. Although YOLOv5 is lighter, YOLOv8 provides a better accuracy/latency balance after compilation using the Sophgo toolchain (TPU-MLIR).
+
+---
+
+# ⚙️ Optimización del Modelo y Toolchain del NPU
+
+Para obtener resultados en el hardware real (SG2002), es obligatorio implementar el flujo de compilación cruzada. Sin esto, el NPU no reconocerá el modelo y la CPU se saturará.
+
+### 🔄 Flujo de Conversión (TPU-MLIR)
+1. **Exportación:** Convertir el modelo entrenado de PyTorch (`.pt`) a formato `ONNX`.
+2. **Cuantización (INT8):** Transformar los pesos del modelo de 32 bits a 8 bits. Esto es vital para que el modelo quepa en los 256MB de RAM y para activar el acelerador de 1 TOPS.
+3. **Compilación:** Generar el binario final `.cvimodel` que el SDK de Sophgo puede ejecutar.
+
+### 🛠 Stack de Software para Implementación
+* **Lenguaje:** C++ (utilizando el SDK `CVI_TDL`) para garantizar el procesamiento en tiempo real.
+* **Aceleración:** Uso de la unidad de procesamiento de tensores (TPU) para liberar la CPU de tareas de visión artificial.
 
 # 🧭 Project Development Stages
 
@@ -198,31 +235,11 @@ The project prioritizes **functionality over miniaturization**.
 
 ---
 
-
----
-# ⚖️ Analysis of Solutions and Evaluation of Alternatives
-
-For Edge AI execution, the following hardware and model options were evaluated:
-
-### Hardware Evaluation
-
-| Alternative | Advantages | Disadvantages | Decision |
-|---|---|---|---|
-| **Raspberry Pi 4** | Large community support | High power consumption and no native NPU | Discarded |
-| **ESP32-S3** | Very low cost and power consumption | Insufficient performance for real-time YOLO | Discarded |
-| **LicheeRV Nano (SG2002)** | **1 TOPS NPU, low cost, RISC-V architecture** | High technical learning curve | **Selected** |
-
-### AI Model Selection
-
-The **YOLOv8 Nano** model is selected, quantized to **INT8**. Although YOLOv5 is lighter, YOLOv8 provides a better accuracy/latency balance after compilation using the Sophgo toolchain (TPU-MLIR).
----
-
 # 🌡️ Environmental Operating Conditions
 
 ## Overview
 
 The system is designed for outdoor use where environmental factors directly affect performance.
-
 ---
 
 ## Temperature
@@ -310,8 +327,6 @@ Development will follow progressive stages:
 
 AR is considered a **final-stage feature**, not a core requirement.
 
----
-
 # 📊 Data Handling
 
 ## Data Sources
@@ -387,7 +402,6 @@ Test in parks, reserves, or zoos under:
 * **IEEE 802.11ax Standard:** To ensure compatibility with WiFi 6 networks.
 * **Ethical AI Guidelines:** Minimization of bias in the local wildlife dataset.
 
-
 ---
 # 🚀 Deployment
 
@@ -407,34 +421,6 @@ Simple and reliable visualization
 Overlay using optical components  
 
 ---
-
-# 🔬 AI Technologies
-
-Uses **YOLO** for real-time detection.
-
-Optimized for:
-
-- low-power devices  
-- edge inference  
-- NPU execution  
-
----
-
-# ⚙️ Optimización del Modelo y Toolchain del NPU
-
-Para obtener resultados en el hardware real (SG2002), es obligatorio implementar el flujo de compilación cruzada. Sin esto, el NPU no reconocerá el modelo y la CPU se saturará.
-
-### 🔄 Flujo de Conversión (TPU-MLIR)
-1. **Exportación:** Convertir el modelo entrenado de PyTorch (`.pt`) a formato `ONNX`.
-2. **Cuantización (INT8):** Transformar los pesos del modelo de 32 bits a 8 bits. Esto es vital para que el modelo quepa en los 256MB de RAM y para activar el acelerador de 1 TOPS.
-3. **Compilación:** Generar el binario final `.cvimodel` que el SDK de Sophgo puede ejecutar.
-
-### 🛠 Stack de Software para Implementación
-* **Lenguaje:** C++ (utilizando el SDK `CVI_TDL`) para garantizar el procesamiento en tiempo real.
-* **Aceleración:** Uso de la unidad de procesamiento de tensores (TPU) para liberar la CPU de tareas de visión artificial.
-
-
-
 # 📦 Project Structure
 
     project/
