@@ -145,7 +145,7 @@ Para obtener resultados en el hardware real (SG2002), es obligatorio implementar
 3. **Compilación:** Generar el binario final `.cvimodel` que el SDK de Sophgo puede ejecutar.
 
 ### 🛠 Stack de Software para Implementación
-* **Lenguaje:** C++ (utilizando el SDK `CVI_TDL`) para garantizar el procesamiento en tiempo real.
+* **Lenguaje:** C (utilizando el SDK `CVI_TDL`) para garantizar el procesamiento en tiempo real.
 * **Aceleración:** Uso de la unidad de procesamiento de tensores (TPU) para liberar la CPU de tareas de visión artificial.
 
 # 🧭 Project Development Stages
