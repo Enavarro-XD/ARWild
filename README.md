@@ -108,6 +108,8 @@ The system uses a board based on the **SOPHGO SG2002 processor**.
 | USB | USB 2.0 Type-C |
 | Operating System | Linux (Buildroot / Debian) |
 
+![Board SG2002](images/lichervnano.jpg)
+
 ---
 
 # 🖥 System Architecture
