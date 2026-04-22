@@ -198,6 +198,25 @@ The project prioritizes **functionality over miniaturization**.
 
 ---
 
+
+---
+# ⚖️ Analysis of Solutions and Evaluation of Alternatives
+
+For Edge AI execution, the following hardware and model options were evaluated:
+
+### Hardware Evaluation
+
+| Alternative | Advantages | Disadvantages | Decision |
+|---|---|---|---|
+| **Raspberry Pi 4** | Large community support | High power consumption and no native NPU | Discarded |
+| **ESP32-S3** | Very low cost and power consumption | Insufficient performance for real-time YOLO | Discarded |
+| **LicheeRV Nano (SG2002)** | **1 TOPS NPU, low cost, RISC-V architecture** | High technical learning curve | **Selected** |
+
+### AI Model Selection
+
+The **YOLOv8 Nano** model is selected, quantized to **INT8**. Although YOLOv5 is lighter, YOLOv8 provides a better accuracy/latency balance after compilation using the Sophgo toolchain (TPU-MLIR).
+---
+
 # 🌡️ Environmental Operating Conditions
 
 ## Overview
@@ -333,6 +352,18 @@ Test in parks, reserves, or zoos under:
 
 ---
 
+# 💰 Project Budget
+
+| Item | Quantity | Unit Cost (COP) | Total (COP) |
+|---|---|---|---|
+| LicheeRV Nano (includes camera) | 1 | $100.000 | $100.000 |
+| Mini LCD/OLED Display | 1 | $120.000 | $120.000 |
+| Class 10 MicroSD Card (32GB) | 1 | $25.000 | $25.000 |
+| Power Bank / Li-Po Battery | 1 | $35.000 | $35.000 |
+| **TOTAL** | | | **$280.000** |
+
+---
+
 # 📈 Performance Analysis
 
 - Accuracy  
@@ -344,6 +375,20 @@ Test in parks, reserves, or zoos under:
 
 ---
 
+# 🛠 Tools and Applied Standards
+
+### Design Tools
+* **KiCad / EasyEDA:** For designing power distribution and peripheral connections.
+* **TPU-MLIR:** Sophgo compiler used to convert PyTorch models into `.cvimodel` files.
+* **Buildroot/Debian:** For generating the embedded operating system image.
+
+### Standards and Regulations
+* **ISO/IEC 29110:** Software engineering guideline for small projects (VSEs).
+* **IEEE 802.11ax Standard:** To ensure compatibility with WiFi 6 networks.
+* **Ethical AI Guidelines:** Minimization of bias in the local wildlife dataset.
+
+
+---
 # 🚀 Deployment
 
 The system may be deployed as:
@@ -375,6 +420,21 @@ Optimized for:
 
 ---
 
+# ⚙️ Optimización del Modelo y Toolchain del NPU
+
+Para obtener resultados en el hardware real (SG2002), es obligatorio implementar el flujo de compilación cruzada. Sin esto, el NPU no reconocerá el modelo y la CPU se saturará.
+
+### 🔄 Flujo de Conversión (TPU-MLIR)
+1. **Exportación:** Convertir el modelo entrenado de PyTorch (`.pt`) a formato `ONNX`.
+2. **Cuantización (INT8):** Transformar los pesos del modelo de 32 bits a 8 bits. Esto es vital para que el modelo quepa en los 256MB de RAM y para activar el acelerador de 1 TOPS.
+3. **Compilación:** Generar el binario final `.cvimodel` que el SDK de Sophgo puede ejecutar.
+
+### 🛠 Stack de Software para Implementación
+* **Lenguaje:** C++ (utilizando el SDK `CVI_TDL`) para garantizar el procesamiento en tiempo real.
+* **Aceleración:** Uso de la unidad de procesamiento de tensores (TPU) para liberar la CPU de tareas de visión artificial.
+
+
+
 # 📦 Project Structure
 
     project/
@@ -394,6 +454,17 @@ Optimized for:
     ├── config/
     ├── build/
     └── README.md
+
+---
+# 📈 Results Analysis (Midterm Milestone)
+
+At the midpoint of the course, the project shows the following progress:
+
+* **PC Inference:** YOLOv8n model successfully trained for 5 species with a mAP of 0.75.
+* **Compilation:** Model conversion to ONNX format was achieved.
+* **Hardware:** The LicheeRV Nano board now runs a functional Linux operating system with active video output to the mini display.
+
+**Pending:** Complete INT8 quantization so the model can run on the NPU without exhausting RAM.
 
 ---
 
