@@ -1,5 +1,5 @@
 # 🐾 ARWild - Animal Detection with Augmented Reality using AI
-![Description](ARWILD.jpg)
+![Description](ARWILD.png)
 
 ## 📌 Project Description
 
