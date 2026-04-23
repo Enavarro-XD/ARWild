@@ -155,12 +155,10 @@ Para obtener resultados en el hardware real (SG2002), es obligatorio implementar
 
 
 ### Demo del Sistema
-<video src="https://raw.githubusercontent.com/m0nkeyh4ck/ARWild/main/images/pantalla_real.mp4" controls style="max-width: 100%;">
-</video>
+![](https://github.com/m0nkeyh4ck/ARWild/raw/main/images/pantalla_real.mp4)
 
 ### Visión en Tiempo Real
-<video src="https://raw.githubusercontent.com/m0nkeyh4ck/ARWild/main/images/vision_real.mp4" controls style="max-width: 100%;">
-</video>
+![](https://github.com/m0nkeyh4ck/ARWild/raw/main/images/vision_real.mp4)
 
 # 📋 System Requirements
 
