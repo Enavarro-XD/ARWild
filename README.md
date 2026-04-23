@@ -154,11 +154,8 @@ Para obtener resultados en el hardware real (SG2002), es obligatorio implementar
 ![Project Development Stages](images/2_development_stages.png)
 
 
-### Demo del Sistema
-![](https://github.com/m0nkeyh4ck/ARWild/raw/main/images/pantalla_real.mp4)
-
-### Visión en Tiempo Real
-![](https://github.com/m0nkeyh4ck/ARWild/raw/main/images/vision_real.mp4)
+![P](images/pan.gif)
+![D](images/vi.gif)
 
 # 📋 System Requirements
 
