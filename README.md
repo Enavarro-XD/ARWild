@@ -487,6 +487,6 @@ https://www.edge-ai-vision.com/
 # ⭐ Project Status
 
 🚧 In development
-
+Pruebas
 ![P](images/pa.gif)
 ![D](images/vi.gif)
