@@ -154,8 +154,15 @@ Para obtener resultados en el hardware real (SG2002), es obligatorio implementar
 ![Project Development Stages](images/2_development_stages.png)
 
 
-[Ver video](images/pantalla_real.mp4)
-[Ver video](images/vision_real.mp4)
+### Demo del Sistema
+<video src="images/pantalla_real.mp4" controls="controls" style="max-width: 100%;">
+  Tu navegador no soporta el elemento de video.
+</video>
+
+### Visión en Tiempo Real
+<video src="images/vision_real.mp4" controls="controls" style="max-width: 100%;">
+  Tu navegador no soporta el elemento de video.
+</video>
 ---
 
 # 📋 System Requirements
