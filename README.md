@@ -21,6 +21,7 @@ It aims to explore how **AI + embedded systems + augmented reality** can be appl
 ---
 
 # 🌍 Relation to the SDGs
+![Objetives](ODS.png)
 
 This project mainly contributes to the following **Sustainable Development Goals (SDGs)**.
 
