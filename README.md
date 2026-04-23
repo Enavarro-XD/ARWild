@@ -1,5 +1,7 @@
 # 🐾 ARWild - Animal Detection with Augmented Reality using AI
 
+![Board SG2002](images/ARWILD.png)
+
 ## 📌 Project Description
 
 ARWild is a portable **computer vision system powered by artificial intelligence** that enables **real-time animal detection and visualization through an augmented reality (AR) interface**.
