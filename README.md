@@ -159,6 +159,8 @@ Para obtener resultados en el hardware real (SG2002), es obligatorio implementar
 
 # 📋 System Requirements
 
+![System Requirements](Requerimeintos del sistema.png)
+
 ## 🔰 Minimum Viable Requirements (MVP)
 
 The system must:
