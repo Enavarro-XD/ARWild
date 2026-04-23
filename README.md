@@ -154,7 +154,7 @@ Para obtener resultados en el hardware real (SG2002), es obligatorio implementar
 ![Project Development Stages](images/2_development_stages.png)
 
 
-![P](images/pan.gif)
+![P](images/pa.gif)
 ![D](images/vi.gif)
 
 # 📋 System Requirements
