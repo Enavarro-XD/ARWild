@@ -109,6 +109,7 @@ The system uses a board based on the **SOPHGO SG2002 processor**.
 | Operating System | Linux (Buildroot / Debian) |
 
 ![Board SG2002](images/lichervnano.jpg)
+![Board SG2002](images/pantalla.jpg)
 
 ---
 
@@ -152,6 +153,9 @@ Para obtener resultados en el hardware real (SG2002), es obligatorio implementar
 
 ![Project Development Stages](images/2_development_stages.png)
 
+
+[Ver video](images/pantalla_real.mp4)
+[Ver video](images/vision_real.mp4)
 ---
 
 # 📋 System Requirements
