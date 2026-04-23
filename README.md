@@ -1,4 +1,5 @@
 # 🐾 ARWild - Animal Detection with Augmented Reality using AI
+![Description](images/ARWILD.jpg)
 
 ## 📌 Project Description
 
@@ -87,6 +88,8 @@ Optimized for:
 
 ---
 # 🧩 Project Hardware
+
+![Hardware](images/sg2002-diagram.png)
 
 The system uses a board based on the **SOPHGO SG2002 processor**.
 
