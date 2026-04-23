@@ -86,7 +86,7 @@ It also demonstrates how low-power devices can run **computer vision models loca
 
 
 
-![System Architecture](sg2002-diagram.png)
+![System Architecture](diagrama sg2002.webp)
 
 The system uses a board based on the **SOPHGO SG2002 processor**.
 
